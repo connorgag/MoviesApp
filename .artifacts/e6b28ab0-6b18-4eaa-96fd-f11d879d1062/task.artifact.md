@@ -1,0 +1,3 @@
+- [x] Create `ic_movie.xml` vector drawable
+- [x] Update `activity_main.xml` with new tab icons
+- [x] Verify build status

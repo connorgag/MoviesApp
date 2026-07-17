@@ -1,0 +1,5 @@
+- [x] Add `isActivityVisible` flag to `MainActivity`
+- [x] Implement `onStart` and `onStop` to manage visibility and polling
+- [x] Guard `updateUIState` and `checkServerReachability` with visibility flag
+- [x] Remove redundant `updateUIState` call from `onCreate`
+- [x] Verify disconnect behavior when backgrounding

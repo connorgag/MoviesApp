@@ -1,0 +1,4 @@
+- [x] Add `isDownloadingYoutube` flag to `MainActivity.kt`
+- [x] Update `downloadYoutubeVideo` to manage `isDownloadingYoutube`
+- [x] Update `updateYoutubeDownloadBarVisibility` to check `isDownloadingYoutube`
+- [x] Verify persistence when navigating away from a video during download
