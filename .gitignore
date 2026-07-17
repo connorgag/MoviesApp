@@ -1,0 +1,46 @@
+# Built artifacts
+bin/
+gen/
+out/
+build/
+.gradle/
+.navigation/
+captures/
+*.apk
+*.aar
+*.ap_
+*.dex
+*.class
+
+# IDE - IntelliJ / Android Studio
+.idea/libraries
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+.idea/modules/
+.idea/runConfigurations/
+.idea/caches/
+*.iml
+*.iws
+
+# Gradle
+.gradle/
+local.properties
+gradle-app.setting
+.bundle/
+
+# Log files
+*.log
+
+# Android Studio - Java / Kotlin
+*.java.swp
+*.kotlin_module
+
+# Device / OS
+.DS_Store
+Thumbs.db
+
+# Secrets
+google-services.json
+GoogleService-Info.plist
