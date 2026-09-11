@@ -1,11 +1,15 @@
 <resources>
-    <string name="app_name">Movies</string>
+    <string name="app_name">MovieApp</string>
     <string name="status_ready">Tailscale detected.\nIt will connect automatically while this app is open, and disconnect when you leave.</string>
     <string name="status_missing">Tailscale app not found.\nInstall it from the Play Store and sign in first.</string>
     <string name="connect_now">Connect now</string>
     <string name="disconnect_now">Disconnect now</string>
     <string name="tab_discover">Discover</string>
     <string name="tab_watch">Watch</string>
+    <string name="tab_qbittorrent">qBittorrent</string>
+    <string name="tab_radarr">Radarr</string>
+    <string name="tab_sonarr">Sonarr</string>
+    <string name="tab_prowlarr">Prowlarr</string>
     <string name="tab_downloads">Downloads</string>
     <string name="tab_youtube">Youtube</string>
     <string name="status_loading">Verifying server…</string>
@@ -16,4 +20,13 @@
     <string name="download_started">Download started...</string>
     <string name="download_success">Download successful!</string>
     <string name="download_failed">Download failed</string>
+    <string name="cd_loading_penguin">Loading penguin</string>
+    <string name="cd_empty_downloads">Empty downloads</string>
+    <string name="msg_empty_downloads_sub">Downloaded movies will appear here for offline viewing.</string>
+    <string name="cd_play_pause">Play or Pause</string>
+    <string name="cd_rewind_10">Rewind 10s</string>
+    <string name="cd_forward_10">Forward 10s</string>
+    <string name="cd_subtitles">Subtitles</string>
+    <string name="txt_rewind_10">-10 seconds</string>
+    <string name="txt_forward_10">+10 seconds</string>
 </resources>

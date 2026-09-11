@@ -3,16 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black">
+    android:background="@color/background_dark">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/background_dark"
         app:layout_constraintTop_toTopOf="parent"
-        app:tabIndicatorColor="@color/red"
-        app:tabSelectedTextColor="@color/red"
-        app:tabTextColor="@android:color/white"
+        app:tabIndicator="@drawable/tab_indicator_pill"
+        app:tabIndicatorColor="@color/accent_red"
+        app:tabIndicatorHeight="4dp"
+        app:tabIndicatorFullWidth="false"
+        app:tabSelectedTextColor="@color/accent_red"
+        app:tabTextColor="@color/text_secondary"
         app:tabIconTint="@color/tab_icon_tint"
         app:tabMode="fixed"
         app:tabGravity="fill">
@@ -38,42 +42,56 @@
             android:icon="@drawable/ic_downloads" />
     </com.google.android.material.tabs.TabLayout>
 
-    <LinearLayout
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/youtubeDownloadBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:padding="8dp"
-        android:background="#1A1A1A"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginVertical="8dp"
+        app:cardBackgroundColor="@color/surface_dark"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="2dp"
+        app:strokeColor="@color/surface_variant"
+        app:strokeWidth="1dp"
         android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@id/tabLayout">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnDownloadYoutube"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/download_video"
-            android:backgroundTint="@color/red"
-            android:textColor="@android:color/white"
-            app:cornerRadius="24dp" />
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="10dp">
 
-        <ProgressBar
-            android:id="@+id/youtubeDownloadProgress"
-            style="?android:attr/progressBarStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:visibility="gone" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDownloadYoutube"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/download_video"
+                android:backgroundTint="@color/accent_red"
+                android:textColor="@android:color/white"
+                android:fontFamily="sans-serif-medium"
+                app:cornerRadius="24dp" />
 
-        <TextView
-            android:id="@+id/youtubeDownloadStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:textColor="@android:color/white"
-            android:visibility="gone" />
-    </LinearLayout>
+            <ProgressBar
+                android:id="@+id/youtubeDownloadProgress"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:progressTint="@color/accent_red"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/youtubeDownloadStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/text_primary"
+                android:textSize="13sp"
+                android:visibility="gone" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <WebView
         android:id="@+id/webviewSeerr"
@@ -92,6 +110,38 @@
         app:layout_constraintTop_toBottomOf="@id/tabLayout" />
 
     <WebView
+        android:id="@+id/webviewQbittorrent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout" />
+
+    <WebView
+        android:id="@+id/webviewRadarr"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout" />
+
+    <WebView
+        android:id="@+id/webviewSonarr"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout" />
+
+    <WebView
+        android:id="@+id/webviewProwlarr"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout" />
+
+    <WebView
         android:id="@+id/webviewYoutube"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -103,47 +153,165 @@
         android:id="@+id/downloadsList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:paddingVertical="8dp"
+        android:clipToPadding="false"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tabLayout" />
 
-    <TextView
-        android:id="@+id/noDownloadsText"
+    <LinearLayout
+        android:id="@+id/emptyDownloadsContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/msg_no_downloads"
-        android:textColor="@android:color/white"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="32dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tabLayout" />
+        app:layout_constraintTop_toBottomOf="@id/tabLayout">
 
-    <LinearLayout
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:src="@drawable/ic_empty_downloads"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/cd_empty_downloads" />
+
+        <TextView
+            android:id="@+id/noDownloadsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/msg_no_downloads"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/msg_empty_downloads_sub"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <FrameLayout
         android:id="@+id/serviceErrorLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="32dp"
+        android:padding="24dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tabLayout">
 
-        <ProgressBar
-            android:id="@+id/serviceProgressBar"
-            android:layout_width="wrap_content"
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp" />
+            android:layout_gravity="center"
+            app:cardBackgroundColor="@color/surface_dark"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="4dp"
+            app:strokeColor="@color/surface_variant"
+            app:strokeWidth="1dp">
 
-        <TextView
-            android:id="@+id/serviceStatusText"
-            android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="32dp">
+
+                <ImageView
+                    android:id="@+id/servicePenguinImage"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_marginBottom="24dp"
+                    android:src="@drawable/penguino"
+                    android:contentDescription="@string/cd_loading_penguin" />
+
+                <ProgressBar
+                    android:id="@+id/serviceProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:progressTint="@color/accent_red" />
+
+                <TextView
+                    android:id="@+id/serviceStatusText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/status_not_connected"
+                    android:textColor="@color/text_primary"
+                    android:textSize="15sp"
+                    android:fontFamily="sans-serif-medium" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/logsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:background="@color/background_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/status_not_connected"
-            android:textColor="@android:color/white"
-            android:textSize="16sp" />
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:background="@color/surface_dark"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="System Logs"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginStart="8dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCopyLogs"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Copy"
+                android:textColor="@color/text_primary" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnClearLogs"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Clear"
+                android:textColor="@color/accent_red" />
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/logsTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:fontFamily="monospace"
+                android:textIsSelectable="true" />
+        </androidx.core.widget.NestedScrollView>
     </LinearLayout>
 
     <FrameLayout
@@ -151,24 +319,198 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/black"
+        android:clickable="true"
+        android:focusable="true"
         android:visibility="gone">
 
-        <VideoView
-            android:id="@+id/videoView"
+        <androidx.media3.ui.PlayerView
+            android:id="@+id/playerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            app:use_controller="false"
+            app:resize_mode="fit" />
 
-        <ImageButton
-            android:id="@+id/playerBackButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_margin="16dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="?attr/homeAsUpIndicator"
-            app:tint="@android:color/white"
-            android:contentDescription="Back to downloads"
-            android:visibility="gone" />
+        <!-- Player Controls Overlay (Top Header & Center Play/Pause) -->
+        <FrameLayout
+            android:id="@+id/playerControlsOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="false">
+
+            <!-- Top Header Bar: Back Button + Title -->
+            <LinearLayout
+                android:id="@+id/playerTopBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="12dp"
+                android:background="@drawable/bg_player_top_gradient">
+
+                <ImageButton
+                    android:id="@+id/playerBackButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/bg_player_back_button"
+                    android:src="?attr/homeAsUpIndicator"
+                    app:tint="@android:color/white"
+                    android:contentDescription="Back to downloads" />
+
+                <TextView
+                    android:id="@+id/playerTitleText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="16dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:ellipsize="end"
+                    android:singleLine="true" />
+
+                <ImageButton
+                    android:id="@+id/btnSubtitles"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/bg_player_back_button"
+                    android:src="@drawable/ic_subtitles"
+                    app:tint="@android:color/white"
+                    android:alpha="0.4"
+                    android:contentDescription="@string/cd_subtitles" />
+            </LinearLayout>
+
+            <!-- Absolute Center Play / Pause Button -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnCenterPlayPause"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                app:cardBackgroundColor="#88000000"
+                app:cardCornerRadius="32dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#44FFFFFF"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:id="@+id/imgCenterPlayPause"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_pause"
+                    app:tint="@android:color/white"
+                    android:contentDescription="@string/cd_play_pause" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Bottom Control Bar: Current Time, Seek Bar, Duration -->
+            <LinearLayout
+                android:id="@+id/playerBottomBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="16dp"
+                android:background="@drawable/bg_player_bottom_gradient">
+
+                <TextView
+                    android:id="@+id/playerCurrentTimeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0:00"
+                    android:textColor="@android:color/white"
+                    android:textSize="13sp"
+                    android:fontFamily="sans-serif-medium" />
+
+                <SeekBar
+                    android:id="@+id/playerSeekBar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:max="1000"
+                    android:progressTint="@color/accent_red"
+                    android:thumbTint="@color/accent_red"
+                    android:progressBackgroundTint="#88FFFFFF" />
+
+                <TextView
+                    android:id="@+id/playerDurationText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0:00"
+                    android:textColor="@android:color/white"
+                    android:textSize="13sp"
+                    android:fontFamily="sans-serif-medium" />
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <!-- YouTube Style Left Double-Tap Seek Feedback Overlay (-10s) -->
+        <LinearLayout
+            android:id="@+id/seekFeedbackLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginStart="100dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_rewind_10"
+                app:tint="@android:color/white"
+                android:contentDescription="@string/cd_rewind_10" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/txt_rewind_10"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                android:fontFamily="sans-serif-medium" />
+        </LinearLayout>
+
+        <!-- YouTube Style Right Double-Tap Seek Feedback Overlay (+10s) -->
+        <LinearLayout
+            android:id="@+id/seekFeedbackRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="100dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_forward_10"
+                app:tint="@android:color/white"
+                android:contentDescription="@string/cd_forward_10" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/txt_forward_10"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                android:fontFamily="sans-serif-medium" />
+        </LinearLayout>
+
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

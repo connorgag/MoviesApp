@@ -1,4 +1,4 @@
-package com.example.tailscaletoggle
+package com.example.movieapp
 
 import android.app.Application
 import androidx.lifecycle.DefaultLifecycleObserver
@@ -17,6 +17,8 @@ class TailscaleApp : Application(), DefaultLifecycleObserver {
     }
 
     override fun onStop(owner: LifecycleOwner) {
-        TailscaleController.disconnect(this)
+        if (!DownloadHelper.hasActiveDownloads(this)) {
+            TailscaleController.disconnect(this)
+        }
     }
 }

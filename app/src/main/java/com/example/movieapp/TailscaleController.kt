@@ -1,4 +1,4 @@
-package com.example.tailscaletoggle
+package com.example.movieapp
 
 import android.content.Context
 import android.content.Intent

@@ -13,14 +13,7 @@ captures/
 *.class
 
 # IDE - IntelliJ / Android Studio
-.idea/libraries
-.idea/modules.xml
-.idea/workspace.xml
-.idea/navEditor.xml
-.idea/assetWizardSettings.xml
-.idea/modules/
-.idea/runConfigurations/
-.idea/caches/
+.idea/
 *.iml
 *.iws
 
@@ -44,3 +37,6 @@ Thumbs.db
 # Secrets
 google-services.json
 GoogleService-Info.plist
+
+# AI Artifacts
+.artifacts/

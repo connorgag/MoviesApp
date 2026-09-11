@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.tailscaletoggle"
+    namespace = "com.example.movieapp"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.tailscaletoggle"
+        applicationId = "com.example.movieapp"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
@@ -39,6 +39,12 @@ dependencies {
     // instead of per-Activity onStart/onStop (which also fires on rotation, dialogs, etc.)
     implementation("androidx.lifecycle:lifecycle-process:2.8.4")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.4")
+    implementation("androidx.work:work-runtime-ktx:2.9.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
     implementation("com.github.bumptech.glide:glide:4.16.0")
+
+    // Jetpack Media3 ExoPlayer for full audio codec support (AC-3, E-AC-3, DTS, Opus, AAC)
+    implementation("androidx.media3:media3-exoplayer:1.3.1")
+    implementation("androidx.media3:media3-ui:1.3.1")
+    implementation("androidx.media3:media3-common:1.3.1")
 }

@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="red">#FF0000</color>
+    <color name="red">#E50914</color>
+    <color name="accent_red">#E50914</color>
+    <color name="accent_red_light">#FF3B30</color>
+    <color name="background_dark">#0F0F12</color>
+    <color name="surface_dark">#181820</color>
+    <color name="surface_variant">#242432</color>
+    <color name="text_primary">#F2F2F7</color>
+    <color name="text_secondary">#9E9EA9</color>
+    <color name="text_tertiary">#54545E</color>
 </resources>
